@@ -1,5 +1,7 @@
 # UCTRONICS Ultimate Pi Rack OLED service
-Simplified install process and adjusted display fork for the UCTRONICS PoE Ultimate Pi Rack (U6143) OLED screens.
+Simplified install process and aligned display fork for the UCTRONICS PoE Ultimate Pi Rack (U6143) OLED screens.
+
+![rack_oled](https://user-images.githubusercontent.com/3183008/145669330-2cb575fe-fe35-405e-a50d-126c2f4b0be5.jpg)
 
 ## Changes
 - Code-base: Removed unnessessary options, relying on CircuitPython module to keep setup quick and easy.
