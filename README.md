@@ -1,53 +1,33 @@
-# U6143_ssd1306
-## Preparation
-```bash
-sudo raspi-config
-```
-Choose Interface Options 
-Enable i2c
+# UCTRONICS Ultimate Pi Rack OLED service
+This is a modified setup process to the original supplied by UCTRONICS to install the OLED service for their PoE Ultimate Pi Rack (U6143).
+After attempting several other options they provided that require building C programs that had missing dependencies, I found the Python approach to be easiest.
 
-##  Clone U6143_ssd1306 library 
+Note: I'm using this on Raspberry Pi 4Bs running Ubuntu Server 20.04. 
+
+## Setup Process
+
+- Grab this repo:
 ```bash
-git clone https://github.com/UCTRONICS/U6143_ssd1306.git
-```
-## Compile 
-```bash
-cd U6143_ssd1306/C
-```
-```bash
-sudo make clean && sudo make 
-```
-## Run 
-```
-sudo ./display
+git clone https://github.com/MaxVRAM/rack_oled.git
 ```
 
-## Add automatic start script
-- Open the rc.local file 
-```bash
-sudo nano /etc/rc.local
-```
-- Add command to the rc.local file
-```bash
-cd /home/pi/U6143_ssd1306/C
-sudo make clean 
-sudo make 
-sudo ./display &
-```
-- reboot your system
-
-## For older 0.91 inch lcd without mcu 
-- For the older version lcd without mcu controller, you can use python demo
-- Install the dependent library files
+- Install required Python modules:
 ```bash
 sudo pip3 install adafruit-circuitpython-ssd1306
-sudo apt-get install python3-pip
 sudo apt-get install python3-pil
 ```
-- Test demo 
+
+- Test the script manually: 
 ```bash 
-cd /home/pi/U6143_ssd1306/python 
-sudo python3 ssd1306_stats.py
+cd ~/uctronics_oled
+sudo python3 rack_oled.py
+```
+
+- If everything runs nicely, add the service to your systemd:
+```bash
+sudo systemctl link /home/pi/uctronics_oled/rack_oled.service
+sudo systemctl enable rack_oled
+sudo systemctl start rack_oled
 ```
 
 
