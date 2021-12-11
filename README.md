@@ -23,7 +23,12 @@ cd ~/pi_rack_oled
 sudo python3 rack_oled.py
 ```
 
-- If everything runs nicely, add the service to your systemd:
+- If everything runs nicely, edit the provided service file to point to the script's location:
+```bash
+nano rack_oled.service
+```
+
+- Then link and add the service to your systemd:
 ```bash
 sudo systemctl link /home/pi/pi_rack_oled/rack_oled.service
 sudo systemctl enable rack_oled
