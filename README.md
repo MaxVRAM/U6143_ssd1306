@@ -8,7 +8,7 @@ Note: I'm using this on Raspberry Pi 4Bs running Ubuntu Server 20.04.
 
 - Grab this repo:
 ```bash
-git clone https://github.com/MaxVRAM/rack_oled.git
+git clone https://github.com/MaxVRAM/pi_rack_oled.git
 ```
 
 - Install required Python modules:
@@ -19,13 +19,13 @@ sudo apt-get install python3-pil
 
 - Test the script manually: 
 ```bash 
-cd ~/uctronics_oled
+cd ~/pi_rack_oled
 sudo python3 rack_oled.py
 ```
 
 - If everything runs nicely, add the service to your systemd:
 ```bash
-sudo systemctl link /home/pi/uctronics_oled/rack_oled.service
+sudo systemctl link /home/pi/pi_rack_oled/rack_oled.service
 sudo systemctl enable rack_oled
 sudo systemctl start rack_oled
 ```
