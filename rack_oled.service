@@ -1,0 +1,10 @@
+[Unit]
+Description=UCTRONICS OLED display
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /home/chris/pi_rack_oled/rack_oled.py
+
+[Install]
+WantedBy=multi-user.target
