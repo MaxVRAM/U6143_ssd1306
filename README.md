@@ -1,8 +1,14 @@
 # UCTRONICS Ultimate Pi Rack OLED service
-This is a modified setup process to the original supplied by UCTRONICS to install the OLED service for their PoE Ultimate Pi Rack (U6143).
-After attempting several other options they provided that require building C programs that had missing dependencies, I found the Python approach to be easiest.
+Simplified install process and aligned display fork for the UCTRONICS PoE Ultimate Pi Rack (U6143) OLED screens.
 
-Note: I'm using this on Raspberry Pi 4Bs running Ubuntu Server 20.04. 
+![rack_oled](https://user-images.githubusercontent.com/3183008/145669330-2cb575fe-fe35-405e-a50d-126c2f4b0be5.jpg)
+
+## Changes
+- Code-base: Removed unnessessary options, relying on CircuitPython module to keep setup quick and easy.
+- Filenames: Changed filenames to more user-friendly text, i.e. `rack_oled.py` instead of `ssd1306_stats.py` 
+- OLED Output: Fixed alignment and removed line overflows.
+
+**Note**: I've only tested this on Raspberry Pi 4Bs running Ubuntu Server 20.04.
 
 ## Setup Process
 
@@ -13,8 +19,8 @@ git clone https://github.com/MaxVRAM/pi_rack_oled.git
 
 - Install required Python modules:
 ```bash
+sudo apt install python3-pil
 sudo pip3 install adafruit-circuitpython-ssd1306
-sudo apt-get install python3-pil
 ```
 
 - Test the script manually: 
