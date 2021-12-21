@@ -39,7 +39,7 @@ draw.rectangle((0, 0, width, height), outline=0, fill=0)
 font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 20)
 
 # Draw text.
-draw.text((0, 5), "UCTRONICS", font=font, fill=255)
+draw.text((0, 5), "| MaxVRAM |", font=font, fill=255)
   # Display image.
 disp.image(image)
 disp.show()
@@ -65,6 +65,8 @@ while True:
     HOST = subprocess.check_output(cmd, shell=True).decode("utf-8").replace('\n', '')
     cmd = "top -bn1 | grep load | awk '{printf \"CPU: %.2f\", $(NF-2)}'"
     CPU = subprocess.check_output(cmd, shell=True).decode("utf-8")
+    cmd = "cat /sys/class/thermal/thermal_zone0/temp | awk '{printf \"%d°C\", $(NF)/1000}'"
+    CPU = f'{CPU} @ {subprocess.check_output(cmd, shell=True).decode("utf-8")}'
     cmd = "free -m | awk 'NR==2{printf \"RAM: %d/%d MB\", $3,$2 }'"
     RAM = subprocess.check_output(cmd, shell=True).decode("utf-8")
     cmd = 'df -h | awk \'$NF=="/"{printf "DSK: %d/%d GB  %s", $3,$2,$5}\''
